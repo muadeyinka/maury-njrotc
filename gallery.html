@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="images/Maury_logo.png" type="image/png" />
+    <style>
+      /* Reset default margin and padding */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .gallery {
+        margin-top: 6rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 100%; /* Ensure images fill their grid space */
+        object-fit: cover; /* Maintain aspect ratio and cover grid item */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        touch-action: pan-y;
+        user-select: none;
+      }
+
+      .gallery img.swipe-left {
+        transform: translateX(-100%);
+      }
+
+      .gallery img.swipe-right {
+        transform: translateX(100%);
+      }
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.5s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery img:hover {
+        transform: rotate(5deg); /* Initial rotation */
+      }
+
+      /* Additional hover effect using JavaScript */
+      .gallery img.swirl-effect {
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Easing for smooth animation */
+      }
+
+      /* Lightbox styles */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .left-btn,
+      .right-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 36px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .left-btn {
+        left: 20px;
+      }
+
+      .right-btn {
+        right: 20px;
+      }
+      /* Add animation keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+      }
+
+      /* Lightbox animation */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease forwards;
+      }
+
+      /* Lightbox image animation */
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      /* Image swipe animation */
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
+      /* Add animation keyframes for lightbox */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+      }
+
+      /* Lightbox styles */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease forwards;
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      /* Image swipe animation */
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-container">
+        <img src="images/Maury logo.png" alt="Maury Logo" class="logo" />
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="chainofcommand.html">Chain of Command</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/mhsnjrotc/" target="_blank"
+            ><img src="images/Instagram.png" alt="Instagram"
+          /></a>
+          <a href="https://www.facebook.com/maurynjrotc" target="_blank"
+            ><img src="images/Facebook.png" alt="Facebook"
+          /></a>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="chainofcommand.html">Chain of Command</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/mhsnjrotc/" target="_blank"
+          ><img src="images/Instagram.png" alt="Instagram"
+        /></a>
+        <a href="https://www.facebook.com/maurynjrotc" target="_blank"
+          ><img src="images/Facebook.png" alt="Facebook"
+        /></a>
+      </div>
+    </nav>
+    <!-- <style>
+        .galleryh1{
+            position: absolute;
+            margin:auto;
+            color: #32354b;
+        }
+    </style>
+<h1 class="galleryh1">Gallery</h1> -->
+    <div class="gallery" id="imageGallery">
+      <!-- Images will be dynamically loaded here -->
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="close-btn" onclick="closeLightbox()">×</span>
+      <img src="" alt="Expanded Image" id="lightbox-img" />
+      <span class="left-btn" onclick="navigateLightbox('left')">❮</span>
+      <span class="right-btn" onclick="navigateLightbox('right')">❯</span>
+    </div>
+
+    <footer>
+      <p>Proudly Serving the Maury Community</p>
+    </footer>
+
+    <script>
+      // Example images (replace with your actual image paths)
+      const images = [
+        "Gallery/1 (1).jpeg",
+        "Gallery/1 (2).jpeg",
+        "Gallery/1 (3).jpeg",
+        "Gallery/1 (4).jpeg",
+        "Gallery/1 (5).jpeg",
+        "Gallery/1 (6).jpeg",
+        "Gallery/1 (7).jpeg",
+        "Gallery/1 (8).jpeg",
+        "Gallery/1 (9).jpeg",
+        "Gallery/1 (10).jpeg",
+        "Gallery/1 (11).jpeg",
+        "Gallery/1 (12).jpeg",
+        "Gallery/1 (13).jpeg",
+        "Gallery/1 (14).jpeg",
+        "Gallery/1 (15).jpeg",
+        "Gallery/1 (16).jpeg",
+        "Gallery/1 (17).jpeg",
+        "Gallery/1 (18).jpeg",
+        "Gallery/1 (19).jpeg",
+        "Gallery/1 (20).jpeg",
+        "Gallery/1 (21).jpeg",
+        // Add more image paths as needed
+      ];
+
+      let currentIndex = 0;
+
+      // Function to load images into the gallery
+      function loadImages() {
+        const gallery = document.getElementById("imageGallery");
+        gallery.innerHTML = ""; // Clear previous content
+
+        images.forEach((image, index) => {
+          const imgElement = document.createElement("img");
+          imgElement.src = image;
+          imgElement.alt = "Gallery Image " + (index + 1);
+          imgElement.addEventListener("click", () => openLightbox(index));
+          gallery.appendChild(imgElement);
+        });
+      }
+
+      // Call loadImages function to initially load images
+      window.onload = loadImages;
+      // Open lightbox with clicked image
+      function openLightbox(index) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = images[index];
+        lightboxImg.alt = "Expanded Image " + (index + 1);
+        lightbox.classList.add("active");
+        lightboxImg.classList.add("active");
+        currentIndex = index;
+      }
+
+      // Close lightbox with animation
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.classList.remove("active");
+        lightbox.classList.remove("active");
+
+        setTimeout(() => {
+          lightbox.style.display = "none";
+        }, 300); // Adjust timing to match CSS transition time
+      }
+
+      // Navigate left or right in lightbox with animation
+      function navigateLightbox(direction) {
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        if (direction === "left") {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          lightboxImg.classList.add("swipe-right");
+        } else if (direction === "right") {
+          currentIndex = (currentIndex + 1) % images.length;
+          lightboxImg.classList.add("swipe-left");
+        }
+
+        setTimeout(() => {
+          lightboxImg.src = images[currentIndex];
+          lightboxImg.alt = "Expanded Image " + (currentIndex + 1);
+          lightboxImg.classList.remove("swipe-left");
+          lightboxImg.classList.remove("swipe-right");
+        }, 300); // Adjust timing to match CSS transition time
+      }
+
+      // Handle swipe gesture
+      function handleSwipe() {
+        if (touchStartX - touchEndX > 50) {
+          // Swiped left
+          navigateLightbox("right");
+        } else if (touchEndX - touchStartX > 50) {
+          // Swiped right
+          navigateLightbox("left");
+        }
+      }
+
+      // Toggle mobile menu
+      function toggleMenu() {
+        var menu = document.getElementById("dropdownMenu");
+        if (menu.style.display === "block") {
+          menu.style.display = "none";
+        } else {
+          menu.style.display = "block";
+        }
+      }
+
+      // Add event listeners for swipe gestures
+      document.addEventListener(
+        "touchstart",
+        function (event) {
+          touchStartX = event.touches[0].clientX;
+        },
+        false
+      );
+
+      document.addEventListener(
+        "touchend",
+        function (event) {
+          touchEndX = event.changedTouches[0].clientX;
+          handleSwipe();
+        },
+        false
+      );
+
+      // Add swirl effect on hover
+      const galleryImages = document.querySelectorAll(".gallery img");
+
+      galleryImages.forEach((img) => {
+        img.addEventListener("mouseenter", startSwirl);
+        img.addEventListener("mousemove", swirl);
+        img.addEventListener("mouseleave", stopSwirl);
+      });
+
+      function startSwirl(event) {
+        this.classList.add("swirl-effect");
+      }
+
+      function swirl(event) {
+        const { offsetX: x, offsetY: y, target } = event;
+        const { offsetWidth: width, offsetHeight: height } = target;
+        const move = 20; // Adjust this value to control the swirl effect intensity
+        const xMove = Math.round((x / width) * move - move / 2);
+        const yMove = Math.round((y / height) * move - move / 2);
+        this.style.transform = `rotateY(${xMove}deg) rotateX(${-yMove}deg)`;
+      }
+
+      function stopSwirl() {
+        this.classList.remove("swirl-effect");
+        this.style.transform = "rotate(5deg)"; // Restore initial hover effect
+      }
+    </script>
+  </body>
+</html>

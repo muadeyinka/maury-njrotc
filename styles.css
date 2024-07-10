@@ -1,0 +1,985 @@
+Reset styles for the body
+body {
+  /* Remove default margin */
+  margin: 0;
+  /* Set font family for the entire document */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* Apply a background gradient */
+  background: linear-gradient(135deg, #272c48, #6b70a4);
+  /* Apply a fade-in animation */
+  animation: fadeInAnimation 1s ease forwards;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeInAnimation {
+  from {
+    /* Start with transparent */
+    opacity: 0;
+  }
+  to {
+    /* End with fully opaque */
+    opacity: 1;
+  }
+}
+
+/* Styles for the navigation bar */
+nav {
+  /* Set background color */
+  background-color: #272c48;
+  /* Set padding */
+  padding: 10px 20px;
+  /* Flexbox for aligning items */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Fix the navbar to the top */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* Ensure it is above other elements */
+  z-index: 1000;
+  /* Apply a bounce-in animation */
+  animation: bounceInAnimation 1s ease;
+}
+
+/* Keyframes for bounce-in animation */
+@keyframes bounceInAnimation {
+  0% {
+    /* Start above the viewport */
+    transform: translateY(-100%);
+  }
+  25% {
+    /* Move below initial position */
+    transform: translateY(20px);
+  }
+  50% {
+    /* Move slightly up */
+    transform: translateY(-10px);
+  }
+  75% {
+    /* Move slightly down */
+    transform: translateY(5px);
+  }
+  100% {
+    /* Settle in final position */
+    transform: translateY(0);
+  }
+}
+
+/* Container for the logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Styles for the logo image */
+.logo {
+  width: 50px;
+  /* Set left margin for larger screens */
+  margin-left: 10rem;
+}
+
+/* Responsive logo styling for mobile */
+@media (max-width: 768px) {
+  .logo {
+    /* Reduce left margin for smaller screens */
+    margin-left: 2rem;
+  }
+}
+
+/* Styles for the navigation links */
+.nav-links {
+  /* Remove list styling */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* Flexbox for horizontal layout */
+  display: flex;
+  /* Set right margin */
+  margin-right: 2rem;
+}
+
+/* Individual nav link item */
+.nav-links li {
+  margin-left: 20px;
+}
+
+/* Remove right margin for the last nav link item */
+.nav-links li:last-child {
+  margin-right: 0;
+}
+
+/* Styles for the nav links */
+.nav-links a {
+  color: #ff4500;
+  text-decoration: none;
+  position: relative;
+  padding: 8px 12px;
+}
+
+/* Hover effect for nav links */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ff4500;
+  transition: width 0.3s ease;
+}
+
+/* Extend underline on hover */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Styles for social icons container */
+.social-icons {
+  display: flex;
+  /* Set right margin */
+  margin-right: 5rem;
+}
+
+/* Styles for individual social icons */
+.social-icons a {
+  margin-right: 30px;
+  /* Transition for hover effect */
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for social icons */
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+/* Styles for social icons images */
+.social-icons img {
+  width: 30px;
+  height: auto;
+}
+
+/* Styles for the footer */
+footer {
+  background-color: #272c48;
+  color: #ff4500;
+  padding: 5px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Container for buttons, centering content vertically */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Styles for buttons */
+.button {
+  padding: 20px 40px;
+  background-color: #272c48;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Pulsate animation */
+  animation: pulsateAnimation 1s infinite alternate;
+}
+
+/* Button hover effect */
+.button:hover {
+  background-color: #1e2140;
+}
+
+/* Keyframes for pulsate animation */
+@keyframes pulsateAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* Main content area styling */
+main {
+  padding: 20px;
+}
+
+/* About section styling */
+.about-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading style for about section */
+.about-section h1 {
+  color: #272c48;
+}
+
+/* Paragraph style for about section */
+.about-section p {
+  color: #666;
+}
+
+/* List style for about section */
+.about-section ul {
+  color: #666;
+  list-style-type: disc;
+}
+
+/* List item style for about section */
+.about-section ul li {
+  margin-left: 20px;
+}
+
+/* Overlay text styling */
+.overlay-text {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: #ff4500;
+  font-size: 70px;
+  z-index: -2;
+  animation: fadeInScale 0.5s ease forwards;
+}
+.overlay-text{
+  height: 100px;
+}
+
+/* Keyframes for fade-in and scale animation */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+  /* Hide nav links on mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: #272c48;
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Style for nav link items on mobile */
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  /* Style for nav links on mobile */
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+  }
+
+  /* Hide social icons on mobile */
+  .social-icons {
+    display: none;
+  }
+
+  /* Show menu icon on mobile */
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    z-index: 1001;
+  }
+
+  /* Style for menu icon spans */
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+  }
+
+  /* Transform first span on menu icon active */
+  .menu-icon.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  /* Hide second span on menu icon active */
+  .menu-icon.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Transform third span on menu icon active */
+  .menu-icon.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Adjust overlay text size on mobile */
+  .overlay-text {
+    font-size: 40px;
+  }
+
+  /* Adjust size of social icons in dropdown menu */
+  .dropdown-menu .social-icons img {
+    width: 20px;
+    height: auto;
+  }
+
+  /* Dropdown menu styles */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #272c48;
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Style for dropdown menu list */
+  .dropdown-menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  /* Style for dropdown menu list items */
+  .dropdown-menu li {
+    margin-bottom: 10px;
+  }
+
+  /* Style for dropdown menu links */
+  .dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+  }
+
+  /* Hover effect for dropdown menu links */
+  .dropdown-menu a:hover {
+    background-color: #ff4500;
+  }
+}
+
+/* Ensure dropdown menu is hidden on desktop */
+@media (min-width: 769px) {
+  .dropdown-menu {
+    display: none !important;
+  }
+
+  /* Hide menu icon on desktop */
+  .menu-icon {
+    display: none;
+  }
+
+  /* Ensure nav links are displayed on desktop */
+  .nav-links {
+    display: flex !important;
+    margin-left: auto;
+  }
+
+  /* Ensure social icons are displayed on desktop */
+  .social-icons {
+    display: flex !important;
+  }
+}
+/* Reset styles */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: #272c48;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    margin-left: 10rem;
+}
+
+/* Logo styles for mobile */
+@media (max-width: 768px) {
+    .logo {
+        margin-left: 2rem;
+    }
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 2rem;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links a {
+    color: #ff4500;
+    text-decoration: none;
+    position: relative;
+    padding: 8px 12px;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff4500;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.social-icons {
+    display: flex;
+    margin-right: 5rem;
+}
+
+.social-icons a {
+    margin-right: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.social-icons img {
+    width: 30px;
+    height: auto;
+}
+
+/* Footer styles */
+footer {
+    background-color: #272c48;
+    color: #ff4500;
+    padding: 5px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* General styles for the main section */
+main {
+    padding: 20px;
+    padding-top: 80px; /* Ensure content is below the fixed header */
+}
+
+/* Styles for the chain of command section */
+.chain-of-command {
+    padding: 100px 20px 20px;
+    text-align: center;
+    background-color: #f4f4f9; /* Adding a light background to the section */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding subtle shadow for depth */
+}
+
+/* Header styles for the chain of command section */
+.chain-header {
+    margin-bottom: 50px;
+}
+
+/* Styles for the chain of command heading */
+.chain-header h1 {
+    font-size: 36px;
+    color: #272c48;
+    margin-bottom: 10px;
+}
+
+/* Flex container for chain of command rows */
+.chain-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Styles for individual chain of command items */
+.chain-item {
+    text-align: center;
+    margin: 10px;
+    flex: 1 1 200px; /* Flex grow and shrink with a base width */
+    max-width: 230px; /* Maximum width for items */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chain-item:hover {
+    transform:translateY(-5px); /* Move slightly up on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow on hover for depth */
+}
+
+/* Image styling for chain of command items */
+.chain-item img {
+    height: 300px;
+    width: 230px;
+    border-radius: 7%;
+    margin-bottom: 10px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .chain-item img {
+        height: 200px;
+        width: 150px;
+    }
+    .chain-header h1 {
+        font-size: 28px;
+    }
+}
+
+/* Additional responsive design for even smaller screens */
+@media (max-width: 480px) {
+    .chain-item img {
+        height: 150px;
+        width: 100px;
+    }
+    .chain-header h1 {
+        font-size: 24px;
+    }
+}
+
+/* General styles for the body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light gray background */
+}
+
+/* Styles for the navigation bar */
+nav {
+    background-color: #272c48; /* Dark blue background */
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    width: 100px;
+}
+
+.logo {
+    width: 100%;
+}
+
+.menu-icon {
+    display: none; /* Hide the menu icon initially */
+    cursor: pointer;
+}
+
+.nav-links, .social-icons {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-links li, .social-icons a {
+    margin: 0 15px;
+}
+
+/* Styles for the dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #272c48; /* Dark blue background */
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu ul {
+    padding: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 10px;
+}
+
+.dropdown-menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu ul li:hover {
+    background-color: #1e2138; /* Darker blue background on hover */
+}
+
+/* Styles for the main section */
+main {
+    padding: 20px;
+}
+
+/* Styles for the chain of command section */
+.chain-of-command {
+    padding: 100px 20px 20px;
+    text-align: center;
+}
+
+.chain-header h1 {
+    font-size: 36px;
+    color: #272c48;
+    margin-bottom: 20px;
+}
+
+/* Flex container for chain of command rows */
+.chain-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+/* Styles for individual chain of command items */
+.chain-item {
+    text-align: center;
+    margin: 10px;
+    flex: 1 1 200px; /* Flex grow and shrink with a base width */
+    max-width: 230px; /* Maximum width for items */
+    background-color: white; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Shadow effect */
+    padding: 20px;
+}
+
+.chain-item img {
+    height: 200px;
+    width: auto;
+    border-radius: 50%; /* Make the images circular */
+    margin-bottom: 20px;
+}
+
+.chain-item h2 {
+    margin-bottom: 10px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Show the menu icon on smaller screens */
+    }
+
+    .nav-links, .social-icons {
+        display: none; /* Hide the navigation links and social icons on smaller screens */
+    }
+
+    .dropdown-menu {
+        position: relative;
+        display: block; /* Show the dropdown menu as a block on smaller screens */
+        margin-top: 10px;
+    }
+
+    .dropdown-menu ul li {
+        display: block;
+    }
+}
+
+/* Additional responsive design for even smaller screens */
+@media (max-width: 480px) {
+    .chain-item img {
+        height: 150px;
+    }
+}
+/* Styles for the navigation bar */
+nav {
+    background-color: #272c48; /* Dark blue background */
+    color: white;
+    padding: 10px 20px; /* Adjusted padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo styles */
+.logo {
+    width: 70px; /* Adjusted logo size */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #272c48; /* Dark blue background */
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    animation: slideDown 0.5s ease; /* Add slide-down animation */
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+/* Track styles */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+/* Handle styles */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the handle */
+  border-radius: 0px; /* Border radius of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Change color of handle on hover */
+}
+/* Styles for individual chain of command items */
+.chain-item {
+  text-align: center;
+  margin: 10px;
+  flex: 1 1 200px; /* Flex grow and shrink with a base width */
+  max-width: 230px; /* Maximum width for items */
+  background-color: white; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Shadow effect */
+  padding: 20px;
+  position: relative; /* Position relative for absolute positioning of overlay */
+}
+
+/* Enlarge image on hover */
+.chain-item img {
+  height: 200px;
+  width: auto;
+  border-radius: 50%; /* Make the images circular */
+  margin-bottom: 20px;
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.chain-item:hover img {
+  transform: scale(1.1); /* Enlarge image on hover */
+}
+
+/* Styles for overlay text */
+/* .overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: #ff4500;
+  font-size: 40px;
+  z-index: 2;
+  transition: opacity 0.3s ease; /* Smooth transition */
+  
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.about-section {
+  background-color: #fff;
+  padding: 50px;
+  margin: 50px 5%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h1 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 36px;
+}
+
+.about-section p {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.about-section ul {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  font-size: 18px;
+}
+/* Reset default margin and padding */
+/* Additional CSS styles */
+/* Reset default margin and padding */
+* {
+  box-sizing: border-box;
+}
+
+/* Global styles */
+/* Global styles */
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2; /* Light gray background */
+}
+
+.container {
+  max-width: 800px;
+  margin: 80px auto 20px; /* Added margin-top of 80px */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  font-size: 28px;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-content {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.section-content p {
+  margin-bottom: 15px;
+}
+
+.section-content ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.section-content li {
+  margin-bottom: 8px;
+}
+
+.mission-statement {
+  font-style: italic;
+  color: #777;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.instructors {
+  margin-top: 30px;
+  display: grid;
+  gap: 20px;
+}
+
+.instructor {
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px;
+}
+
+.instructor img {
+  max-width: 90%;
+  border-radius: 8;
+}
+
+.instructor-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.instructor-info h4 {
+  margin: 0;
+  color: #333;
+}
+
+.instructor-info p {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.contact-info {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.contact-info p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-info a:hover {
+  color: #0056b3;
+}
+

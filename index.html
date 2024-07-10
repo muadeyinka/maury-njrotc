@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maury NJROTC</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="images/Maury logo.png" type="image/png">
+  </head>
+  <body>
+    <style>
+       body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #272c48, #6b70a4);
+
+      color: white;
+      text-align: center;
+    }
+    </style>
+    <nav>
+      <div class="logo-container">
+        <a href="index.html"><img src="images/Maury logo.png" alt="Maury Logo" class="logo" /></a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="chainofcommand.html">Chain of Command</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/mhsnjrotc/" target="_blank"><img src="images/Instagram.png" alt="Instagram" /></a>
+          <a href="https://www.facebook.com/maurynjrotc" target="_blank"><img src="images/Facebook.png" alt="Facebook" /></a>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="chainofcommand.html">Chain of Command</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/mhsnjrotc/" target="_blank"><img src="images/Instagram.png" alt="Instagram" /></a>
+        <a href="https://www.facebook.com/maurynjrotc" target="_blank"><img src="images/Facebook.png" alt="Facebook" /></a>
+      </div>
+      <!-- Add this inside the <nav> element -->
+<div class="menu-icon">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+    </nav>
+    <div class="button-container">
+     <a href="about.html"> <button class="button">About Us</button></a>
+      <h1 class="overlay-text">Maury NJROTC</h1>
+      <!-- Add the overlay text here -->
+    </div>
+  
+    
+    <script>
+      /* JavaScript function to toggle menu */
+      function toggleMenu() {
+        var menu = document.getElementById("dropdownMenu");
+        if (menu.style.display === "block") {
+          menu.style.display = "none";
+        } else {
+          menu.style.display = "block";
+        }
+      }
+    </script>
+
+    <footer>
+      <p>Proudly Serving the Maury Community</p>
+    </footer>
+  </body>
+</html>
